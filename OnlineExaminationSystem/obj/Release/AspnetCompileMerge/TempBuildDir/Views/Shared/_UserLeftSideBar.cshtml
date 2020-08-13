@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Page = "AdminHome";
+}
+<style>
+    img {
+        width: 150px;
+        height: 150px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        border-color: #3c8dbc;
+        border-width: 2px;
+    }
+</style>
+<!-- Left side column -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="box box-primary" style="margin: 5px; width: auto; height: 100%; border-bottom: none;">
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <div align="center" class="sidebar-form" style="border-top-width: 3px; border-color: #3c8dbc; background-color: #ecf0f5; width: auto">
+            <img src=@Html.Action("ImageUrl", "UserHome") />
+            <div>
+                <h1><b>@Html.Action("UserName", "UserHome")</b>
+                </h1>
+                <h3>@Html.Action("UserDepartment", "UserHome")</h3>
+                <h3>@Html.Action("StudentNumber", "UserHome")</h3>
+            </div>
+        </div>
+        <div align="center" class="sidebar-form" style="border-top-width: 3px; border-color: #3c8dbc; background-color: #ecf0f5; width: auto">
+            <div align="center">
+                <h3><b>Kişisel Bilgiler</b></h3>
+                <h3>
+                    <br/>
+                </h3>
+                <h3>
+                    <br/>
+                </h3>
+            </div>
+        </div>
+    </section>
+    <!-- /.sidebar -->
+</aside>

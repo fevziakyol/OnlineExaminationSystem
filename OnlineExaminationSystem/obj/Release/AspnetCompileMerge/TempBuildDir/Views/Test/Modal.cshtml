@@ -1,0 +1,61 @@
+﻿<!-- Modal Finish Exam -->
+<div class="modal fade" style="overflow-y: scroll" id="modal-finish-exam" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Sınavı Bitir
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="new-user-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    Sınavı bitirmek istediğinize emin misiniz?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-danger"><i class="fa fa-times"></i> Hayır</button>
+                <button type="submit" onclick="finishExam(@Model.Exam.Id);" class="btn btn-success"><i class="fa fa-check"></i> Evet</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Answer Paper -->
+<div class="modal fade" id="modal-answer-paper" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Cevap Kağıdı
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="edit-answer-paper-errors" style="color: red;">
+                </div>
+                <div class="box-body table-responsive">
+                    <table id="table-answer" style="width: 100%; overflow-y: auto" class="table table-bordered dataTable table-hover">
+                        <thead>
+                        <tr role="row">
+                            <th>Soru</th>
+                            <th>Cevap</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody-answer"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var oTableAnswer;
+    var IdToEdit = 0;
+    var CanEditPath = false;
+    $(document).ready(function () {
+        initTableAnswer(@Model.Exam.Id);
+    });
+</script>

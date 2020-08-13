@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Atanmış Sınavlar";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box-body">
+                        <div class="panel">
+                            <div class="form-group col-lg-2">
+                                <label for="select-exam-type">Sınav Adı</label>
+                                <select id="select-exam-type" class="form-control">
+                                    <option value="">Seçiniz</option>
+                                    @foreach (var exam in ViewBag.examList)
+                                    {
+                                        <option value="@exam.Id">@exam.ExamName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label for="select-user-type">Kullanıcı Adı</label>
+                                <select id="select-user-type" class="form-control">
+                                    <option value="">Seçiniz</option>
+                                    @foreach (var user in ViewBag.userList)
+                                    {
+                                        <option value="@user.ID">@user.Name @user.Surname</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4" style="margin-top: 25px;">
+                                <button onclick="newAssignExam();" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i> Yeni Sınav Ata</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table id="table-assign-exam" style="width: 100%" class="table table-bordered dataTable table-hover">
+                            <thead>
+                                <tr role="row">
+                                    <th>Atama Id</th>
+                                    <th>Kullanıcı Adı</th>
+                                    <th>Sınav Adı</th>
+                                    <th>Durumu</th>
+                                    <th class="nosort nofilter"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-assign"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@Html.Partial("Modal")
+<script src="~/Scripts/verticalTabs.js"></script>
+<script>
+    var oTableAssignExam;
+    var IdToEdit = 0;
+    var CanEditPath = true;
+    $(document).ready(function () {
+        initTableAssignExam();
+    });
+    $("#select-exam-type").change(function () {
+        oTableAssignExam.fnDraw();
+    });
+    $("#select-user-type").change(function () {
+        oTableAssignExam.fnDraw();
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/Scripts/assignExam")
+}

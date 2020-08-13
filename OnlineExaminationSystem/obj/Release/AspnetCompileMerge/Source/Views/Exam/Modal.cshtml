@@ -1,0 +1,116 @@
+﻿<!-- Modal New Exam -->
+<div class="modal fade" id="modal-new-exam" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Sınav Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="new-exam-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="select-new-lessonType" class="col-sm-3 control-label">Ders</label>
+                        <div class="col-sm-9">
+                            <select id="select-new-lessonType" class="form-control">
+                                <option value="">Seçiniz</option>
+                                @foreach (var lesson in ViewBag.lessons)
+                                {
+                                    <option value="@lesson.Id">@lesson.LessonName </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-exam-name" class="col-sm-3 control-label">Sınav Adı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-new-exam-name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-exam-lecture-name" class="col-sm-3 control-label">Dersin Hocası</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-new-exam-lecture-name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-exam-question-number" class="col-sm-3 control-label">Sınav Soru Sayısı</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="txt-new-exam-question-number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-exam-time" class="col-sm-3 control-label">Sınav Süresi (dk)</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="txt-new-exam-time">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> İptal</button>
+                <button type="button" onclick="addExam();" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Edit Exam -->
+<div class="modal fade" id="modal-edit-exam" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Sınav Düzenle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="edit-exam-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="select-edit-lessonType" class="col-sm-3 control-label">Ders</label>
+                        <div class="col-sm-9">
+                            <select id="select-edit-lessonType" class="form-control">
+                                <option value="">Seçiniz</option>
+                                @foreach (var lesson in ViewBag.lessons)
+                                {
+                                    <option value="@lesson.Id">@lesson.LessonName </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-exam-name" class="col-sm-3 control-label">Sınav Adı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-edit-exam-name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-exam-lecture-name" class="col-sm-3 control-label">Dersin Hocası</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-edit-exam-lecture-name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-exam-question-number" class="col-sm-3 control-label">Sınav Soru Sayısı</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="txt-edit-exam-question-number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-exam-time" class="col-sm-3 control-label">Sınav Süresi (dk)</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="txt-edit-exam-time">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> İptal</button>
+                <button type="button" onclick="updateExam();" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>

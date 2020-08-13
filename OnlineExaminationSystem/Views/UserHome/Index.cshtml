@@ -1,0 +1,122 @@
+﻿@using OnlineExaminationSystem.App_Start
+@model OnlineExaminationSystem.Models.ViewModel.UserHomeViewModel
+@{
+    ViewBag.Title = "Sınavlar";
+}
+<link href="~/Content/css/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+    <section class="content">
+        @if (Model.AssignedExamList.Find(a => a.UserID == Util.UserInfo.UserID) == null)
+        {
+            <div class="box box-primary">
+                <div class="box-body" style="height: 100px;">
+                    <h3> Yönlendirilmiş herhangi bir sınavınız bulunamadı.</h3>
+                    <h5 align="right"> Yetkili kişi ile irtibata geçiniz.</h5>
+                </div>
+            </div>
+        }
+        @if (Model.AssignedExamList.Find(a => a.UserID == Util.UserInfo.UserID) != null)
+        {
+            var count = 0;
+            foreach (var exam in Model.AssignedExamList.Where(a => a.UserID == Util.UserInfo.UserID && a.IsActiv))
+            {
+                if (count != 0)
+                {
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <h3 class="box-title">@exam.Exam.ExamName</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body" style="height: 100px;">
+                            <div class="box-body">
+                                <dl class="dl-horizontal">
+                                    <dt>Sınav Adı:</dt>
+                                    <dd>@exam.Exam.ExamName</dd>
+                                    <dt>Sınav Soru Sayısı:</dt>
+                                    <dd>@exam.Exam.ExamQuestionNumber</dd>
+                                    <dt>Sınav Süresi (dk):</dt>
+                                    <dd>@exam.Exam.ExamTime</dd>
+                                    <dt>Dersin Hocası:</dt>
+                                    <dd>@exam.Exam.ExamLectureName</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="box box-footer">
+                            <button onclick="loginExam(@exam.ExamId, 1);" value="@exam.ExamId" class="btn btn-primary btn-sm" style="float: right;"><i class="fa fa-check"></i> Sınava Git</button>
+                        </div>
+                    </div>
+                }
+                if (count == 0)
+                {
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <h3 class="box-title">@exam.Exam.ExamName</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body" style="height: 100px;">
+                            <div class="box-body">
+                                <dl class="dl-horizontal">
+                                    <dt>Sınav Adı:</dt>
+                                    <dd>@exam.Exam.ExamName</dd>
+                                    <dt>Sınav Soru Sayısı:</dt>
+                                    <dd>@exam.Exam.ExamQuestionNumber</dd>
+                                    <dt>Sınav Süresi (dk):</dt>
+                                    <dd>@exam.Exam.ExamTime</dd>
+                                    <dt>Dersin Hocası:</dt>
+                                    <dd>@exam.Exam.ExamLectureName</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="box box-footer">
+                            <button onclick="loginExam(@exam.ExamId, 1);" value="@exam.ExamId" class="btn btn-primary btn-sm" style="float: right;"><i class="fa fa-check"></i> Sınava Git</button>
+                        </div>
+                    </div>
+                    count++;
+                }
+            }
+            var count1 = 0;
+            foreach (var exam in Model.AssignedExamList.Where(a => a.UserID == Util.UserInfo.UserID && a.IsActiv == false && count == 0))
+            {
+                if (count1 == 0)
+                {
+                    if (exam.IsActiv == false)
+                    {
+                        <div class="box box-primary">
+                            <div class="box-body" style="height: 100px;">
+                                <h3> Yönlendirilmiş herhangi bir sınavınız bulunamadı.</h3>
+                                <h5 align="right"> Yetkili kişi ile irtibata geçiniz.</h5>
+                            </div>
+                        </div>
+                    }
+                    count1++;
+                }
+            }
+        }
+    </section>
+</div>
+@Html.Partial("Modal")
+<script>
+    var ExamID = 0;
+    var QuestionNumber = 0;
+    window.oncontextmenu = function () {
+        return false;
+    }
+    document.onkeydown = function (e) { 
+        if (window.event.keyCode == 123 ||  e.button==2)    
+            return false;
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/Scripts/userExam")
+}

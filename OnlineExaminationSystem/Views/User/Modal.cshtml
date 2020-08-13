@@ -1,0 +1,116 @@
+﻿<!-- Modal New User -->
+<div class="modal fade" id="modal-new-user" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Yeni Kullanıcı Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="new-user-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="txt-new-user-name" class="col-sm-4 control-label">Adı</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-new-user-name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-user-surname" class="col-sm-4 control-label">Soyadı</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-new-user-surname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-user-student-no" class="col-sm-4 control-label">Öğrenci No</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-new-user-student-no">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-user-department" class="col-sm-4 control-label">Bölümü</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-new-user-department">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-user-username" class="col-sm-4 control-label">Kullanıcı Adı</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-new-user-username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-user-password" class="col-sm-4 control-label">Şifre</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="txt-new-user-password">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> İptal</button>
+                <button type="button" onclick="addUser();" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Edit User -->
+<div class="modal fade" id="modal-edit-user" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Kullanıcı Düzenle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="edit-user-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    <div id="edit-user-name" class="form-group">
+                        <label for="txt-edit-user-name" class="col-sm-4 control-label">Adı</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-edit-user-name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-user-surname" class="col-sm-4 control-label">Soyadı</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-edit-user-surname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-user-student-no" class="col-sm-4 control-label">Öğrenci No</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-edit-user-student-no">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-user-department" class="col-sm-4 control-label">Bölümü</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-edit-user-department">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-user-username" class="col-sm-4 control-label">Kullanıcı Adı</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-edit-user-username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-user-password" class="col-sm-4 control-label">Şifre</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-edit-user-password" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> İptal</button>
+                <button type="button" onclick="updateUser();" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>

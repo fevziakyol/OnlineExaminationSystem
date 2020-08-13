@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="box box-primary">
+            <div class="row">
+                <div class="content" style="min-height: 0px; padding-bottom: 0px;">
+                    <div class="col-md-3">
+                        <div class="info-box bg-aqua">
+                            <span class="info-box-icon"><i class="fa fa-television"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Sınavlar</span>
+                                <span class="info-box-number">4</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                                <span class="progress-description">
+                                    Sistemde kayıtlı toplam sınav sayısı: <b>4</b>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info-box bg-green">
+                            <span class="info-box-icon"><i class="fa fa-users"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">KULLANICILAR</span>
+                                <span class="info-box-number">8</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                                <span class="progress-description">
+                                    Sistemde kayıtlı toplam sınav sayısı: <b>8</b>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info-box bg-yellow">
+                            <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">İZİNLER</span>
+                                <span class="info-box-number">17</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                                <span class="progress-description">
+                                    32 izin içerisinden 17 tanesi aktif.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="form-group col-lg-3">
+                    <label for="select-exam-type">Sınav Adı</label>
+                    <select id="select-exam-type" class="form-control">
+                        <option value="">Seçiniz</option>
+                        @foreach (var exam in Model.ExamList)
+                        {
+                            <option value="@exam.Id">@exam.ExamName</option>
+                        }
+                    </select>
+                </div>
+                <button type="button" onclick="displayGraph();" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-search"></i> Göster</button>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
+        <div class="" style="overflow-y: auto; height: 350px;">
+            <ul class="timeline">
+                <li class="time-label">
+                    <span class="bg-red">
+                        @DateTime.Now.ToString("dd/MM/yyyy")
+                    </span>
+                </li>
+                <li>
+                    <i class="fa fa-calendar bg-yellow"></i>
+                    <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</span>
+                        <h3 class="timeline-header"><a>İzin işlemleri</a></h3>
+                        <div class="timeline-body">
+                            <b>Fevzi Akyol</b> kullanıcısına <b>Test 3</b> sınavı eklendi.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <i class="fa fa-user bg-green"></i>
+                    <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</span>
+                        <h3 class="timeline-header"><a>İzin işlemleri</a></h3>
+                        <div class="timeline-body">
+                            <b>Fevzi Akyol</b> kullanıcısına <b>Test 3</b> sınavı eklendi.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <i class="fa fa-television bg-blue"></i>
+                    <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</span>
+                        <h3 class="timeline-header"><a>İzin işlemleri</a></h3>
+                        <div class="timeline-body">
+                            <b>Fevzi Akyol</b> kullanıcısına <b>Test 3</b> sınavı eklendi.
+                        </div>
+                    </div>
+                </li>
+                @*@foreach (var list in Model.DashboardLogList)
+                {
+                    <li>
+                        @if (list.EventType == 1)
+                        {
+                            <i class="fa fa-user bg-green"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> @list.EventTime.ToString("dd/MM/yyyy HH:mm")</span>
+                                <h3 class="timeline-header"><a>Kullanıcı İşlemleri</a></h3>
+                                <div class="timeline-body">
+                                    <b>@list.Device.Name</b> @list.Description
+                                </div>
+                            </div>
+                        }
+                        @if (list.EventType == 2)
+                        {
+                            <i class="fa fa-television bg-blue"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> @list.EventTime.ToString("dd/MM/yyyy HH:mm")</span>
+                                <h3 class="timeline-header"><a>Sınav İşlemleri</a></h3>
+                                <div class="timeline-body">
+                                    <b>@list.Stream.Name</b> @list.Description
+                                </div>
+                            </div>
+                        }
+                        @if (list.EventType == 3)
+                        {
+                            <i class="fa fa-calendar bg-yellow"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> @list.EventTime.ToString("dd/MM/yyyy HH:mm")</span>
+                                <h3 class="timeline-header"><a>İzin işlemleri</a></h3>
+                                <div class="timeline-body">
+                                    <b>@list.Device.Name</b> cihazına <b>@list.Stream.Name</b> @list.Description
+                                </div>
+                            </div>
+                        }
+                    </li>
+                }*@
+                <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/dashboard")
+}

@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Dersler";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box-header">
+                        <button onclick="newLesson();" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i> Yeni Ders</button>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table id="table-lesson" style="width:100%" class="table table-bordered dataTable table-hover">
+                            <thead>
+                            <tr role="row">
+                                <th>Ders Id</th>
+                                <th>Ders Adı</th>
+                                <th class="nosort nofilter"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody-lesson"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@Html.Partial("Modal")
+<script src="~/Scripts/verticalTabs.js"></script>
+<script>
+    var oTableLesson;
+    var IdToEdit = 0;
+    var CanEditPath = true;
+    $(document).ready(function () {
+        initTableLesson();
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/Scripts/lesson")
+}

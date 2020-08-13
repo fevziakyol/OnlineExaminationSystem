@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Sorular";
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+    <section class="content">
+        <div class="box box-primary">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box-body">
+                        <div class="panel">
+                            <div class="form-group col-lg-2">
+                                <label for="select-lesson-type">Ders Adı</label>
+                                <select id="select-lesson-type" class="form-control">
+                                    <option value="">Seçiniz</option>
+                                    @foreach (var lesson in Model.LessonList)
+                                    {
+                                        <option value="@lesson.Id">@lesson.LessonName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label for="select-exam-type">Sınav Adı</label>
+                                <select id="select-exam-type" class="form-control">
+                                    <option value="">Seçiniz</option>
+                                    @foreach (var exam in Model.ExamList)
+                                    {
+                                        <option value="@exam.Id">@exam.ExamName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4" style="margin-top: 25px;">
+                                <button onclick="newQuestion();" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i> Yeni Soru Ekle</button>
+                                <button onclick="newExam();" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i> Yeni Sınav Oluştur (0)</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table id="table-question" style="width:100%" class="table table-bordered dataTable table-hover">
+                            <thead>
+                            <tr role="row">
+                                <th>Soru Id</th>
+                                <th>Ders Adı</th>
+                                <th>Sınav Adı</th>
+                                <th>Soru</th>
+                                <th>A şıkkı</th>
+                                <th>B şıkkı</th>
+                                <th>C şıkkı</th>
+                                <th>D şıkkı</th>
+                                <th style="width: 30px;">Cevap</th>
+                                <th class="nosort nofilter"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody-question"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@Html.Partial("Modal")
+<script src="~/Scripts/verticalTabs.js"></script>
+<script>
+    var oTableQuestion;
+    var IdToEdit = 0;
+    var CanEditPath = true;
+    $(document).ready(function () {
+        initTableQuestion();
+    });
+    $("#select-lesson-type").change(function () {
+        oTableQuestion.fnDraw();
+    });
+    $("#select-exam-type").change(function () {
+        oTableQuestion.fnDraw();
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/Scripts/question")
+}

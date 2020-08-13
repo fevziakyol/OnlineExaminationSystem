@@ -1,0 +1,43 @@
+﻿
+<script>
+    @{
+        var actions = new []
+        {
+            new [] {"User", "GetUsers", Url.Action("GetUsers", "User")},
+            new [] {"User", "CreateUser", Url.Action("CreateUser", "User")},
+            new [] {"User", "UpdateUser", Url.Action("UpdateUser", "User")},
+            new [] {"User", "DeleteUser", Url.Action("DeleteUser", "User")},
+            new [] {"Lesson", "GetLessons", Url.Action("GetLessons", "Lesson")},
+            new [] {"Lesson", "CreateLesson", Url.Action("CreateLesson", "Lesson")},
+            new [] {"Lesson", "UpdateLesson", Url.Action("UpdateLesson", "Lesson")},
+            new [] {"Lesson", "DeleteLesson", Url.Action("DeleteLesson", "Lesson")},
+            new [] {"Exam", "GetExams", Url.Action("GetExams", "Exam")},
+            new [] {"Exam", "CreateExam", Url.Action("CreateExam", "Exam")},
+            new [] {"Exam", "UpdateExam", Url.Action("UpdateExam", "Exam")},
+            new [] {"Exam", "DeleteExam", Url.Action("DeleteExam", "Exam")},
+            new [] {"Question", "GetQuestions", Url.Action("GetQuestions", "Question")},
+            new [] {"Question", "CreateQuestion", Url.Action("CreateQuestion", "Question")},
+            new [] {"Question", "UpdateQuestion", Url.Action("UpdateQuestion", "Question")},
+            new [] {"Question", "DeleteQuestion", Url.Action("DeleteQuestion", "Question")},
+            new [] {"AssignExam", "GetAssignExams", Url.Action("GetAssignExams", "AssignExam")},
+            new [] {"AssignExam", "CreateAssignExam", Url.Action("CreateAssignExam", "AssignExam")},
+            new [] {"AssignExam", "UpdateAssignExam", Url.Action("UpdateAssignExam", "AssignExam")},
+            new [] {"AssignExam", "DeleteAssignExam", Url.Action("DeleteAssignExam", "AssignExam")},
+            new [] {"Test", "SetAnswer", Url.Action("SetAnswer", "Test")},
+            new [] {"Test", "FinishAssignExam", Url.Action("FinishAssignExam", "Test")},
+            new [] {"Test", "GetAnswers", Url.Action("GetAnswers", "Test")},
+            new [] {"Result", "GetResults", Url.Action("GetResults", "Result")}
+        };
+    }
+    function getActionUrl(controller, action) {
+        @foreach (var action in actions)
+        {
+            <text>
+                if (controller === '@action[0]' && action === '@action[1]') {
+                    return '@action[2]';
+                }
+            </text>
+        }
+        return null;
+    }
+</script>

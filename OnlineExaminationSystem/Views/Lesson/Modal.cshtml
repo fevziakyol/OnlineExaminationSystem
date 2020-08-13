@@ -1,0 +1,56 @@
+﻿<!-- Modal New Lesson -->
+<div class="modal fade" id="modal-new-lesson" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Yeni Ders Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="new-lesson-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="txt-new-lesson-name" class="col-sm-4 control-label">Dersin Adı</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-new-lesson-name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> İptal</button>
+                <button type="button" onclick="addLesson();" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Edit Lesson -->
+<div class="modal fade" id="modal-edit-lesson" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Ders Düzenle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="edit-lesson-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="txt-edit-lesson-name" class="col-sm-4 control-label">Dersin Adı</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt-edit-lesson-name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> İptal</button>
+                <button type="button" onclick="updateLesson();" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>

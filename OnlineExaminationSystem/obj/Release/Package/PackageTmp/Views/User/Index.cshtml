@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Kullanıcılar";
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+    <section class="content">
+        <div class="box box-primary">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box-header">
+                        <button onclick="newUser();" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i> Yeni Kullanıcı</button>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table id="table-user" style="width:100%" class="table table-bordered dataTable table-hover">
+                            <thead>
+                            <tr role="row">
+                                <th>Adı</th>
+                                <th>Soyadı</th>
+                                <th>Öğrenci No</th>
+                                <th>Bölüm</th>
+                                <th>Kullanıcı Adı</th>
+                                <th class="nosort nofilter"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody-user"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@Html.Partial("Modal")
+<script src="~/Scripts/verticalTabs.js"></script>
+<script>
+    var oTableUser;
+    var IdToEdit = 0;
+    var passwordTemp = "";
+    var CanEditPath = true;
+    $(document).ready(function () {
+        initTableUser();
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/Scripts/userconfig")
+}

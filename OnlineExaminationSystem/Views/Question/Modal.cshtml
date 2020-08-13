@@ -1,0 +1,174 @@
+﻿<!-- Modal New Question -->
+<div class="modal fade" id="modal-new-question" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Soru Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="new-question-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="select-new-lessonType" class="col-sm-3 control-label">Ders</label>
+                        <div class="col-sm-9">
+                            <select id="select-new-lessonType" class="form-control">
+                                <option value="">Seçiniz</option>
+                                @foreach (var lesson in Model.LessonList)
+                                {
+                                    <option value="@lesson.Id">@lesson.LessonName </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-new-lessonType" class="col-sm-3 control-label">Sınav</label>
+                        <div class="col-sm-9">
+                            <select id="select-new-examType" class="form-control">
+                                <option value="">Seçiniz</option>
+                                @foreach (var exam in Model.ExamList)
+                                {
+                                    <option value="@exam.Id">@exam.ExamName </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-question-text" class="col-sm-3 control-label">Soru Metni</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-new-question-text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-question-choice-a" class="col-sm-3 control-label">A şıkkı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-new-question-choice-a">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-question-choice-b" class="col-sm-3 control-label">B şıkkı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-new-question-choice-b">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-question-choice-c" class="col-sm-3 control-label">C şıkkı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-new-question-choice-c">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-new-question-choice-d" class="col-sm-3 control-label">D şıkkı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-new-question-choice-d">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-new-questionType" class="col-sm-3 control-label">Cevap</label>
+                        <div class="col-sm-9">
+                            <select id="select-new-questionType" class="form-control">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> İptal</button>
+                <button type="button" onclick="addQuestion();" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Edit Question -->
+<div class="modal fade" id="modal-edit-question" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Soru Düzenle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="edit-question-errors" style="color: red;">
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="select-edit-lessonType" class="col-sm-3 control-label">Ders</label>
+                        <div class="col-sm-9">
+                            <select id="select-edit-lessonType" class="form-control">
+                                <option value="">Seçiniz</option>
+                                @foreach (var lesson in Model.LessonList)
+                                {
+                                    <option value="@lesson.Id">@lesson.LessonName </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-edit-lessonType" class="col-sm-3 control-label">Sınav</label>
+                        <div class="col-sm-9">
+                            <select id="select-edit-examType" class="form-control">
+                                <option value="">Seçiniz</option>
+                                @foreach (var exam in Model.ExamList)
+                                {
+                                    <option value="@exam.Id">@exam.ExamName </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-question-text" class="col-sm-3 control-label">Soru Metni</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-edit-question-text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-question-choice-a" class="col-sm-3 control-label">A şıkkı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-edit-question-choice-a">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-question-choice-b" class="col-sm-3 control-label">B şıkkı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-edit-question-choice-b">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-question-choice-c" class="col-sm-3 control-label">C şıkkı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-edit-question-choice-c">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-edit-question-choice-d" class="col-sm-3 control-label">D şıkkı</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txt-edit-question-choice-d">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-edit-questionType" class="col-sm-3 control-label">Cevap</label>
+                        <div class="col-sm-9">
+                            <select id="select-edit-questionType" class="form-control">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> İptal</button>
+                <button type="button" onclick="updateQuestion();" class="btn btn-success"><i class="fa fa-check"></i> Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>

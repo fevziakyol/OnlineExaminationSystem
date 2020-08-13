@@ -1,0 +1,42 @@
+﻿@model OnlineExaminationSystem.Models.LoginModel
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<div class="login-box">
+    <div class="login-logo">
+        <img src="~/Content/images/ybu.png" style="width: 150px; height: 150px;"/>
+    </div>
+    <div class="login-logo" style="width: 100%;">
+        <b>Online Sınav Sistemi</b>
+    </div>
+    <div class="login-box-body" style="border-radius: 10px;">
+
+        @using (Html.BeginForm("Login", "Login", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group has-feedback">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeHolder = "Kullanıcı Adı", @Value = Model.UserName })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+                <div class="form-group has-feedback">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeHolder = "Şifre", @Value = Model.Password })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                <div class="form-group has-feedback">
+                    @Html.CheckBoxFor(m => m.RememberMe, htmlAttributes: new { @checked = Model.RememberMe }) @Html.LabelFor(m => m.RememberMe)
+                </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius: 10px;"><i class="fa fa-sign-in"></i> Giriş</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#UserName").focus();
+    });
+</script>
+
